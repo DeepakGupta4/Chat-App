@@ -23,7 +23,7 @@ const Login = ({funSetLogin,setLoginFunc}) => {
     }
     const handleLogin =async ()=>{
         setLoading(true)
-        await axios.post("http://localhost:9000/api/auth/login",inputField,{withCredentials:true}).then(response=>{
+        await axios.post("https://chat-app-5-fhsa.onrender.com/api/auth/login",inputField,{withCredentials:true}).then(response=>{
             // console.log(response)
 
             let userInfo = response.data.user;

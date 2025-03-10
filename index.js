@@ -44,7 +44,7 @@ io.on("connection", (socket) => {
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: "https://chat-app-5-fhsa.onrender.com",
   })
 );
 

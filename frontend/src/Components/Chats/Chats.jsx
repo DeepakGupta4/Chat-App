@@ -14,7 +14,7 @@ const Chats = (props) => {
   const fetchMessages = async () => {
     await axios
       .get(
-        `http://localhost:9000/api/chat/get-message-chat/${props.selectedId}`,
+        `https://chat-app-5-fhsa.onrender.com/api/chat/get-message-chat/${props.selectedId}`,
         { withCredentials: true }
       )
       .then((response) => {
@@ -40,7 +40,7 @@ const Chats = (props) => {
     if (content.trim().length === 0) return alert("Please Enter Message");
     await axios
       .post(
-        `http://localhost:9000/api/chat/post-message-chat`,
+        `https://chat-app-5-fhsa.onrender.com/api/chat/post-message-chat`,
         {
           conversation: props.selectedId,
           content: content,

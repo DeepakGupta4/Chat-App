@@ -32,7 +32,7 @@ const Dashboard = ({ setLoginFunc }) => {
 
   let fetchConversation = async () => {
     await axios
-      .get("http://localhost:9000/api/conversation/get-conversation", {
+      .get("http://https://chat-app-5-fhsa.onrender.com/api/conversation/get-conversation", {
         withCredentials: true,
       })
       .then((response) => {
@@ -47,7 +47,7 @@ const Dashboard = ({ setLoginFunc }) => {
   const fetchUserBySearch = async () => {
     await axios
       .get(
-        `http://localhost:9000/api/auth/searchedMember?queryParam=${queryParam}`,
+        `https://chat-app-5-fhsa.onrender.com/api/auth/searchedMember?queryParam=${queryParam}`,
         { withCredentials: true }
       )
       .then((response) => {
@@ -83,7 +83,7 @@ const Dashboard = ({ setLoginFunc }) => {
   const handleLogout = async () => {
     await axios
       .post(
-        "http://localhost:9000/api/auth/logout",
+        "https://chat-app-5-fhsa.onrender.com/api/auth/logout",
         {},
         { withCredentials: true }
       )
@@ -101,7 +101,7 @@ const Dashboard = ({ setLoginFunc }) => {
   const handleCreateConv = async (id) => {
     await axios
       .post(
-        `http://localhost:9000/api/conversation/add-conversation`,
+        `https://chat-app-5-fhsa.onrender.com/api/conversation/add-conversation`,
         { receiverId: id },
         { withCredentials: true }
       )

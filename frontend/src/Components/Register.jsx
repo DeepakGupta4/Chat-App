@@ -33,7 +33,7 @@ const Register = ({funSetLogin}) => {
 
     const handleRegister =async ()=>{
         setLoading(true)
-        await axios.post("http://localhost:9000/api/auth/register",inputField).then(response=>{
+        await axios.post("https://chat-app-5-fhsa.onrender.com/api/auth/register",inputField).then(response=>{
             funSetLogin(true);
             // console.log(response)
         }).catch(err=>{
