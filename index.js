@@ -9,6 +9,7 @@ const path = require('path');
 
 const server = http.createServer(app);
 
+// ✅ Socket.io ko HTTPS pe chalane ka code
 const io = new Server(server, {
   cors: {
     origin: "https://chat-app-5-fhsa.onrender.com",
@@ -18,14 +19,11 @@ const io = new Server(server, {
   },
 });
 
-
-const _dirname = path.resolve();
-
 require("./DataBase/db.js");
 app.use(express.json());
 app.use(cookieParser());
 
-// ✅ Handle Socket Connection
+// ✅ Socket.io Event Listen
 io.on("connection", (socket) => {
   console.log("User connected");
 
@@ -44,7 +42,6 @@ io.on("connection", (socket) => {
   });
 });
 
-// ✅ Handle CORS (Properly)
 app.use(
   cors({
     credentials: true,
@@ -52,23 +49,21 @@ app.use(
   })
 );
 
-// ✅ Import Routes
 const UserRoutes = require("./Routes/userRoute.js");
 const ConversationRoute = require("./Routes/conversation.js");
 const MessageRoutes = require("./Routes/message.js");
 
-// ✅ Use Routes
 app.use("/api/auth", UserRoutes);
 app.use("/api/conversation", ConversationRoute);
 app.use("/api/chat", MessageRoutes);
 
-// ✅ Serve Frontend Files Correctly
-app.use(express.static(path.join(_dirname, "/frontend/dist")));
+// ✅ Static Files Serve
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.get('*',(_,res)=>{
-  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 })
 
-// ✅ Start The Server
+// ✅ Port Listen
 server.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
