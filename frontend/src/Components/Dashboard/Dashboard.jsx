@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Conversation from "../Conversation/Conversation";
 import Chats from "../Chats/Chats";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../axios";
 import socket from "../../socket";
 
 const Dashboard = ({ setLoginFunc }) => {

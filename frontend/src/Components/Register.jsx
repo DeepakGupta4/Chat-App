@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Register.css'
 import ProfileSelector from './ProfileSelector/ProfileSelector'
-import axios from 'axios';
+import axios from '../axios';
 import Loader from './Loader';
 
 const Register = ({funSetLogin}) => {

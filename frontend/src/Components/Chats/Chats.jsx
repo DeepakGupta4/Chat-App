@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Chats.css";
 import SendIcon from "@mui/icons-material/Send";
-import axios from "axios";
+import axios from "../../axios";
 import socket from "../../socket";
 
 const Chats = (props) => {
