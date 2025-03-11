@@ -25,6 +25,7 @@ require("./DataBase/db.js");
 app.use(express.json());
 app.use(cookieParser());
 
+// ✅ Handle Socket Connection
 io.on("connection", (socket) => {
   console.log("User connected");
 
@@ -35,7 +36,6 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", (convId, messageDetail) => {
     console.log("message sent");
-
     io.to(convId).emit("receiveMessage", messageDetail);
   });
 
@@ -44,6 +44,7 @@ io.on("connection", (socket) => {
   });
 });
 
+// ✅ Handle CORS (Properly)
 app.use(
   cors({
     credentials: true,
@@ -51,20 +52,23 @@ app.use(
   })
 );
 
+// ✅ Import Routes
 const UserRoutes = require("./Routes/userRoute.js");
 const ConversationRoute = require("./Routes/conversation.js");
 const MessageRoutes = require("./Routes/message.js");
-const { Socket } = require("dgram");
 
+// ✅ Use Routes
 app.use("/api/auth", UserRoutes);
 app.use("/api/conversation", ConversationRoute);
 app.use("/api/chat", MessageRoutes);
 
+// ✅ Serve Frontend Files Correctly
 app.use(express.static(path.join(_dirname, "/frontend/dist")));
 app.get('*',(_,res)=>{
   res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
 })
 
+// ✅ Start The Server
 server.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
