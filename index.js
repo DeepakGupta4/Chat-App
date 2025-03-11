@@ -13,8 +13,11 @@ const io = new Server(server, {
   cors: {
     origin: "https://chat-app-5-fhsa.onrender.com",
     methods: ["GET", "POST"],
+    credentials: true,
+    transports: ["websocket", "polling"]
   },
 });
+
 
 const _dirname = path.resolve();
 
